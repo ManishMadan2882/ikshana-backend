@@ -20,6 +20,9 @@ app.use(session({
     store:MongoStore.create({mongoUrl : process.env.MONGO_LOCAL})
   }));
 //NEW USER/DOCTOR/WHATEVER
+app.get('/',(req,res)=>{
+res.json({msg:"hello world"});
+})
 app.post('/register',async (req,res)=>{
     const username=req.body.username;
     console.log(username);
