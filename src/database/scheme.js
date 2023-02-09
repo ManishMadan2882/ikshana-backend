@@ -15,39 +15,28 @@ const user_schema = new mongoose.Schema({
         type : String,
         required : true
     },
-    role : {
+    about:{
+        type:String
+    },
+    type : {
         type : String,
         required : true
-    },
-    about:{
-        type:String,
     }
 
 });
 const patient_schema = new mongoose.Schema({
     name:String,
+    username:String,
     personalInfo:{
         gender:String,
-        age:Number,
-        ailment:String,
-        department:String,
-        bloodGroup:String,
-        Room:String,
-        Bed:{
-           type: String
-        }
+        DOB : Date,
+        bloodGroup:String
+ 
     },
     reports:Array,
-    records:Array,
-    doctors:Array,//under observance of
-    Checkin:String,
-    Checkout:{
-        type:String,
-        default:'_'
-    }
-
+    records:Array 
 });
-const healthWorkers = new mongoose.model("workers",user_schema);
+const users = new mongoose.model("users",user_schema);
 const patients =new mongoose.model("patients",patient_schema);
 
-export {healthWorkers,patients}
+export {users,patients}
