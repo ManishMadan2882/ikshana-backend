@@ -17,12 +17,9 @@ app.use(session({
     saveUninitialized:true,
     cookie:{maxAge : 30*3600*24*1000 },
     secret: secret_key,
-    store:MongoStore.create({mongoUrl : process.env.MONGO_LOCAL})
+    store:MongoStore.create({mongoUrl : process.env.MONGO})
   }));
 //NEW USER/DOCTOR/WHATEVER
-app.get('/',(req,res)=>{
-res.json({msg:"hello world"});
-})
 app.post('/register',async (req,res)=>{
     const username=req.body.username;
     console.log(username);
